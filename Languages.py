@@ -8,3 +8,14 @@ langs = {
     'swedish': 'sv-SE',
     'turkish': 'tr-TR'
 }
+
+translate_langs = {
+    'dutch': 'nl',
+    'english': 'en',
+    'french': 'fr',
+    'german': 'de',
+    'japanese': 'ja',
+    'spanish': 'es',
+    'swedish': 'sv',
+    'turkish': 'tr'
+}

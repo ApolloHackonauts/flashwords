@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 
 # NOTE: this example requires PyAudio because it uses the Microphone class
-from Languages import langs
 
+from os import path
+from Languages import langs
 import speech_recognition as sr
 
-def speech_to_text(lang= "en-US"):
+AUDIO_FILEPATH = path.dirname(path.realpath(__file__)) + '\\'
+
+def speech_to_text(filename, lang= "en-US"):
 
     lang =  lang.lower()
 
@@ -14,9 +17,10 @@ def speech_to_text(lang= "en-US"):
 
     # obtain audio from the microphone
     r = sr.Recognizer()
-    with sr.Microphone() as source:
-        print("Say something!")
-        audio = r.listen(source)
+    audio_file = filename
+    print(audio_file)
+    with sr.AudioFile(audio_file) as source:
+        audio = r.record(source)  # read the entire audio file
 
     # recognize speech using Google Cloud Speech
     GOOGLE_CLOUD_SPEECH_CREDENTIALS = r"""{
@@ -41,8 +45,7 @@ def speech_to_text(lang= "en-US"):
 
 
 if __name__ == "__main__":
-    
-    speech = speech_to_text("spanish")
+    speech = speech_to_text('test.flac', 'english')
     print("Google thinks you said, " + speech)
 
     

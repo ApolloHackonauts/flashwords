@@ -1,7 +1,7 @@
 #TODO -- add console output logging
 from Languages import langs
 
-def synth_text(text, output='output.mp3', lang='en-US'):
+def synth_text(text, output='output.wav', lang='en-US'):
     """Send raw text to be synthesized into audio
     input:  text : str
             lang : str
@@ -28,4 +28,4 @@ def synth_text(text, output='output.mp3', lang='en-US'):
         print('Audio content written to file ' + output)
 
 if __name__ == '__main__':
-    synth_text('Yes! Soylent has arrive! Gib right now I want it-I want it!', output='test.mp3', lang=langs['english'])
+    synth_text('Yes! Soylent has arrive! Gib right now I want it-I want it!', output='pronounciation_attempt.wav', lang=langs['english'])
