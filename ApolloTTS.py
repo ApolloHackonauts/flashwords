@@ -1,10 +1,11 @@
 #TODO -- add console output logging
 from Languages import langs
 
-def synth_text(text, lang='en-US'):
+def synth_text(text, output='output.mp3', lang='en-US'):
     """Send raw text to be synthesized into audio
     input:  text : str
             lang : str
+            output : str
     output: output.mp3
     lang must be a valid language code, i.e. 'en-US'
     """
@@ -22,9 +23,9 @@ def synth_text(text, lang='en-US'):
     response = client.synthesize_speech(input_text, voice, audio_config)
 
     # The response's audio_content is binary.
-    with open('output.mp3', 'wb') as out:
+    with open(output, 'wb') as out:
         out.write(response.audio_content)
-        print('Audio content written to file "output.mp3"')
+        print('Audio content written to file ' + output)
 
 if __name__ == '__main__':
-    synth_text('Yes! Soylent has arrive! Gib right now I want it-I want it!', langs['english'])
+    synth_text('Yes! Soylent has arrive! Gib right now I want it-I want it!', output='test.mp3', lang=langs['english'])
